@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static const char *font = "FiraCode Nerd Font:size=13:style=Bold";
+static const char *font = "FiraCode Nerd Font:size=11:style=Bold";
 static int borderpx = 2;
 
 /*

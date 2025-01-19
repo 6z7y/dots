@@ -1,16 +1,16 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 2.50;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 10;       /* vertical padding of bar */
+static const int vertpad            = 11;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const int user_bh            = 11;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = {"CaskaydiaMonoNerdFont-Bold:size=10.8"};
-static const char dmenufont[]       = "CaskaydiaMonoNerdFont-Bold:size=10.6";
+static const char *fonts[]          = {"CaskaydiaMonoNerdFont-Bold:size=9"};
+static const char dmenufont[]       = "CaskaydiaMonoNerdFont-Bold:size=10";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
