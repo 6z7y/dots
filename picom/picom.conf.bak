@@ -158,9 +158,9 @@ focus-exclude = [
  # "class_g = 'Cairo-clock'" ,
 ];
 opacity-rule = [
-"70:class_g = 'st-256color' && focused",
-"60:class_g = 'st-256color' && !focused",
-"93:class_g = 'discord'",
+"85:class_g = 'st-256color' && focused",
+"70:class_g = 'st-256color' && !focused",
+"89:class_g = 'discord'",
 #"40:fullscreen",
 #"30:class_g ='st'",
 "65:class_g ='dmenu'",

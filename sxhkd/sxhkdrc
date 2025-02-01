@@ -1,0 +1,24 @@
+# Reload functions
+super + Escape
+	"$XDG_CONFIG_HOME"/sxhkd/functions
+
+
+ctrl + shift + Up
+  doas light -A 4
+ctrl + shift + Down
+  doas light -U 4
+
+
+ctrl + shift + Right
+  pactl set-sink-volume @DEFAULT_SINK@ +2%
+ctrl + shift + Left
+  pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+ctrl + shift + s
+  maim -s -o | xclip -selection clipboard -t image/png
+
+ctrl + shift + a
+  maim -s -o ~/Pictures/$(date +%Y~%m-%d_%H-%M-%S).png
+
+ctrl + shift + l
+  xset dpms force off

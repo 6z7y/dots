@@ -65,14 +65,15 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
     /* function format          argument */
-    {run_command, "[  %s% / ", "light -G | awk '{print int($1)}'"},
-    {run_command, "  %s% ] ", "pamixer --get-volume"},
-    {temp, "[  %s󰔄 /", "/sys/class/thermal/thermal_zone0/temp"},
-    {ram_used, "  %s / ", NULL},
-    {battery_state, " %s", "BAT0"},
-    {battery_perc, "%s% ] ", "BAT0"},
-    {wifi_essid, "[   %s ] ", "wlan0"},
-    {datetime, "[ 󱑃 %s / ", "%T"},
-    {keymap, "%s ]", NULL},
-
+{run_command, "[  %s%%  | ", "light -G | awk '{print int($1)}'"},
+{run_command, "  %s%%  | ", "pamixer --get-volume"},
+{cpu_perc, " %3s%%  | ", NULL},
+{temp, " %s°C  | ", "/sys/class/thermal/thermal_zone0/temp"},
+{ram_used, "󰍛 %s  | ", NULL},
+{battery_perc, "󰁹 %s%% ", "BAT0"},
+{battery_state, "%s  | ", "BAT0"},
+{wifi_essid, " %s  | ", "wlan0"},
+{datetime, "󰃰 %s  | ", "%B %d"},
+{datetime, " %s  | ", "%H:%M:%S"},
+{keymap, " %s ] ", NULL},
 };

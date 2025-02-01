@@ -146,9 +146,6 @@ fade-delta = 14
 # Do not fade destroyed ARGB windows with WM frame. Workaround of bugs in Openbox, Fluxbox, etc.
 # no-fading-destroyed-argb = false
 
-fade-exclude = [
-  "class_g = 'slop'",
-];
 
 #################################
 #   Transparency / Opacity      #
@@ -158,19 +155,13 @@ focus-exclude = [
  # "class_g = 'Cairo-clock'" ,
 ];
 opacity-rule = [
-"70:class_g = 'st-256color' && focused",
-"60:class_g = 'st-256color' && !focused",
-"93:class_g = 'discord'",
-#"40:fullscreen",
-#"30:class_g ='st'",
+"92:class_g ='discord'",
+"70:class_g ='st'",
+"70:class_g ='kitty'",
 "65:class_g ='dmenu'",
 "75:class_g ='dwm'",
-"100:class_g = 'firefox' && focused",
-"85:class_g = 'firefox' && !focused",
+"100:class_g ='firefox'",
 ]
-
-# Use fixed inactive dim value, instead of adjusting according to window opacity.
-inactive-dim-fixed = 0.0
 
 #################################
 #           Corners             #
@@ -183,7 +174,7 @@ rounded-corners-exclude = [
 
 blur = true
 blur-method = "dual_kawase"
-blur-strength = 5
+blur-strength = 7
 blur-background = true
 blur-background-frame = true
 blur-background-fixed = false
@@ -243,5 +234,20 @@ shadow-opacity = 0.8;
 # Add borders to specific windows
 shadow-exclude = [
   #  "!class_g = 'dwm'"  # Apply shadow only to windows with class 'dwm'
-  "class_g = 'slop'",
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
