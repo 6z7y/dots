@@ -40,12 +40,12 @@ return {
     key = 'u',
     action = 'Lazy sync',
   },
-  {
-    icon = '  ',
-    desc = ' Restore Session',
-    key = 's',
-    action = 'SessionLoad',
-  },
+  -- {
+  --   icon = '  ',
+  --   desc = ' Restore Session',
+  --   key = 's',
+  --   action = 'SessionLoad',
+  -- },
   {
     icon = '󰗼  ',
     desc = ' Quit',
@@ -56,4 +56,3 @@ return {
     } -- Close setup function
   end
 }
-

@@ -19,18 +19,14 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 
-            -- تكوين lua_ls
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
 
-            -- تكوين rust_analyzer
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
 
-
-            -- تعيينات المفاتيح
             local opts = {}
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -38,10 +34,10 @@ return {
         end,
     },
     {
-        "hrsh7th/cmp-nvim-lsp",  -- إضافة cmp-nvim-lsp
+        "hrsh7th/cmp-nvim-lsp",
     },
     {
-        "simrat39/rust-tools.nvim",  -- إضافة rust-tools (اختياري)
+        "simrat39/rust-tools.nvim",
         config = function()
             require("rust-tools").setup({})
         end,
