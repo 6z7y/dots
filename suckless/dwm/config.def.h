@@ -1,15 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 13;       /* gap pixel between windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int gappx     = 16;       /* gap pixel between windows */
 static const unsigned int snap      = 3;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 11;       /* vertical padding of bar */
-static const int sidepad            = 10;       /* horizontal padding of bar */
+static const int vertpad            = 8;       /* vertical padding of bar */
+static const int sidepad            = 310;       /* horizontal padding of bar */
 static const int user_bh            = 11;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = {"JetBrainsMono Nerd Font:size=10"};
+static const char *fonts[]          = {"CaskaydiaMonoNerdFont-Bold:size=10"};
 static const char dmenufont[]       = "CaskaydiaMonoNerdFont-Bold:size=10";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -24,7 +24,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};  
+static const char *tags[] = {"󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠"};  
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -43,9 +43,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{"",      tile },    /* first entry is default */
+	{"󰣥",      tile },    /* first entry is default */
 	{"󰭩",      NULL },    /* no layout function means floating behavior */
-	{"󰍇",    monocle},
+	{"",    monocle},
 };
 
 /* key definitions */
@@ -99,8 +99,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_o,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_o,      quit,           {1} }, 
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
 /* button definitions */
