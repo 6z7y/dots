@@ -65,10 +65,9 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
     /* function format          argument */
-    {datetime, "            %s                                       ",  "%H:%M %b %d"},
-    //{run_command, " %s%% | ", "light -G | awk '{print int($1)}'"},
-    {run_command, "  %s%% | ", "pamixer --get-volume"},
-    {battery_perc, "󰁹 %s%% ", "BAT0"},
-    {battery_state, "%s | ", "BAT0"},
-    {wifi_essid, " %s  ", "wlan0"},
+    { run_command,  "  %s%% | ",            "pamixer --get-volume" },
+    { battery_perc, "󰁹 %s%% ",             "BAT0" },
+    { battery_state, "%s | ",               "BAT0" },
+    { wifi_essid,   " %s | ",              "wlan0" },
+    { datetime,     " %s ",                 "%H:%M %b %d" },
 };
