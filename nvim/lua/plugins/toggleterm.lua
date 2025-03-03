@@ -4,9 +4,8 @@ return {
         config = function()
             require("toggleterm").setup({
                 open_mapping = [[<C-_>]],
-                direction = "tab",
+                direction = "float",
             })
         end
     },
 }
-

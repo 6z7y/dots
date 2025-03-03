@@ -40,7 +40,8 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- save
 keymap.set('n', '<C-s>', ':w<CR>', opts)
--- Diagnostics
---keymap.set("n", "<C-j>", function()
---  vim.diagnostic.goto_next()
---end, opts)
+
+--Diagnostics
+keymap.set("n", "<C-j>", function()
+vim.diagnostic.goto_next()
+end, opts)
