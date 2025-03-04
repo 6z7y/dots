@@ -1,7 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -12,10 +8,7 @@ keymap.set("n", "-", "<C-x>")
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
-
--- New tab
+-- tabs
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
 keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
@@ -37,6 +30,19 @@ keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
+
+-- Move in insert mode using Ctrl + h/j/k/l
+keymap.set("i", "<C-h>", "<Left>", opts)
+keymap.set("i", "<C-j>", "<Down>", opts)
+keymap.set("i", "<C-k>", "<Up>", opts)
+keymap.set("i", "<C-l>", "<Right>", opts)
+
+-- keybinds plugins
+keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { silent = true }) -- neo-tree
+
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {}) -- lsp
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- save
 keymap.set('n', '<C-s>', ':w<CR>', opts)

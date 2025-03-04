@@ -7,11 +7,11 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { silent = true })
     require('neo-tree').setup({
       window = {
         mappings = {
           ['l'] = 'open',
+          ['h'] = 'navigate_up',
         }
       }
     })

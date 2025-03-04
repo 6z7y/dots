@@ -26,11 +26,6 @@ return {
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
-
-            local opts = {}
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
         end,
     },
     {

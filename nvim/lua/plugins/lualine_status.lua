@@ -5,7 +5,7 @@ return {
     options = {
       theme = "pywal",
       section_separators = { left = "", right = "" },
-      component_separators = { left = "", right = "" },
+      component_separators = { left = "  ", right = " " },
       icons_enabled = true,
     },
     sections = {
