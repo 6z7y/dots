@@ -40,12 +40,12 @@ return {
     key = 'u',
     action = 'Lazy sync',
   },
-  -- {
-  --   icon = '  ',
-  --   desc = ' Restore Session',
-  --   key = 's',
-  --   action = 'SessionLoad',
-  -- },
+   {
+     icon = '  ',
+     desc = ' Restore Session',
+     key = 'r',
+     action = 'SessionRestore',
+   },
   {
     icon = '󰗼  ',
     desc = ' Quit',

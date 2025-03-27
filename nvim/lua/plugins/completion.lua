@@ -3,7 +3,7 @@ return {
       event = "InsertEnter",
       dependencies = {
         "hrsh7th/cmp-nvim-lsp",   -- LSP suggestions
-        -- "hrsh7th/cmp-buffer",     -- Buffer suggestions
+        "hrsh7th/cmp-buffer",     -- Buffer suggestions
         "hrsh7th/cmp-path",       -- File path suggestions
         "hrsh7th/cmp-cmdline",    -- Command-line suggestions
         "L3MON4D3/LuaSnip",       -- Snippets support

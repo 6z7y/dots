@@ -38,16 +38,19 @@ keymap.set("i", "<C-k>", "<Up>", opts)
 keymap.set("i", "<C-l>", "<Right>", opts)
 
 -- keybinds plugins
+keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
+
 keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { silent = true }) -- neo-tree
 
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {}) -- lsp
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+keymap.set("n", "K", vim.lsp.buf.hover, {}) -- lsp
+keymap.set("n", "gd", vim.lsp.buf.definition, {})
+keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- save
 keymap.set('n', '<C-s>', ':w<CR>', opts)
 
 --Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "J", function()
 vim.diagnostic.goto_next()
 end, opts)
