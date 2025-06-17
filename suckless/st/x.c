@@ -244,7 +244,7 @@ typedef struct {
 static Fontcache *frc = NULL;
 static int frclen = 0;
 static int frccap = 0;
-static char *usedfont = NULL;
+static const char *usedfont = NULL;
 static double usedfontsize = 0;
 static double defaultfontsize = 0;
 
@@ -1157,6 +1157,7 @@ xinit(int cols, int rows)
 	if (!FcInit())
 		die("could not init fontconfig.\n");
 
+	usedfont = (opt_font == NULL)? font : opt_font;
 	xloadfonts(usedfont, 0);
 
 	/* colors */
