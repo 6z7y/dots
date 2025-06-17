@@ -1,16 +1,16 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int gappx     = 11;       /* gap pixel between windows */
-static const unsigned int snap      = 3;       /* snap pixel */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int gappx     = 14;        /* gaps between windows */
+static const unsigned int snap      = 15;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 9;       /* vertical padding of bar */
-static const int sidepad            = 210;       /* horizontal padding of bar */
-static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = {"CaskaydiaMonoNerdFont-Bold:size=10"};
-static const char dmenufont[]       = "CaskaydiaMonoNerdFont-Bold:size=10";
+static const int user_bh            = 13;        /* 2 is the default spacing around the bar's font */
+static const int vertpad            = 13;       /* vertical padding of bar */
+static const int sidepad            = 303;       /* horizontal padding of bar */
+static const char *fonts[]          = {"HurmitNerdFont-BoldItalic:size=11.3"};
+static const char dmenufont[]       = "HurmitNerdFont-Bold:size=10";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -24,7 +24,8 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠"};  
+static const char *tags[] = {"󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠", "󰺠"};
+
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,7 +33,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,      NULL,       NULL,       0,            0,           -1 },
+	{ NULL,     NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -43,9 +44,10 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{"󰣥",      tile },    /* first entry is default */
+	{"",      tile },    /* first entry is default */
 	{"󰭩",      NULL },    /* no layout function means floating behavior */
 	{"",    monocle},
+
 };
 
 /* key definitions */
@@ -61,9 +63,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[] = {"st", "-e", "fish", NULL};
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[] = {"fish", "-c", "st -e fish &", NULL};
 
+#include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -75,6 +78,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -89,7 +94,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_n,      xrdb,           {.v = NULL } },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+        { MODKEY,                       XK_n,     xrdb,           {.v = NULL } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -118,4 +126,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

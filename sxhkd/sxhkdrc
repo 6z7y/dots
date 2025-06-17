@@ -2,17 +2,16 @@
 super + Escape
 	"$XDG_CONFIG_HOME"/sxhkd/functions
 
-
 ctrl + shift + Up
-  doas light -A 4
+  doas light -A 10
+  
 ctrl + shift + Down
-  doas light -U 4
-
+  doas light -U 10
 
 ctrl + shift + Right
-  pactl set-sink-volume @DEFAULT_SINK@ +2%
+  pactl set-sink-volume @DEFAULT_SINK@ +6%
 ctrl + shift + Left
-  pactl set-sink-volume @DEFAULT_SINK@ -2%
+  pactl set-sink-volume @DEFAULT_SINK@ -6%
 
 ctrl + shift + s
   maim -s -o | xclip -selection clipboard -t image/png
@@ -22,3 +21,6 @@ ctrl + shift + a
 
 ctrl + shift + l
   xset dpms force off
+
+ctrl + shift + n
+  killall cngwal ; ~/.config/startup/cngwal

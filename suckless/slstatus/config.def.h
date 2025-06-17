@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 300;
+const unsigned int interval = 80;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -56,6 +56,7 @@ static const char unknown_str[] = "n/a";
  *                                                     thermal zone on FreeBSD
  *                                                     (tz0, tz1, etc.)
  * uid                 UID of current user             NULL
+ * up                  interface is running            interface name (eth0)
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
@@ -64,10 +65,25 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const struct arg args[] = {
-    /* function format          argument */
-    { run_command,  "  %s%% | ",            "pamixer --get-volume" },
-    { battery_perc, "󰁹 %s%% ",             "BAT0" },
-    { battery_state, "%s | ",               "BAT0" },
-    { wifi_essid,   " %s | ",              "wlan0" },
-    { datetime,     " %s ",                 "%H:%M %b %d" },
-};
+	/* function format          argument */
+    { datetime, "%s                    ", "%H:%M %b %d" },
+    { run_command, "  %s%% | ", "pamixer --get-volume" },
+    { run_command, "  %s% | ", "light -G | awk '{print int($1)}'"},
+    { battery_perc, "  %s%% ", "BAT0" },
+    { battery_state, "%s | ", "BAT0" },
+    { wifi_essid, "  %s ", "wlan0" },
+    {keymap, "   %s  ", NULL},
+    // {temp, " %s󰔄 /", "/sys/class/thermal/thermal_zone0/temp"},
+    // { cpu_perc, "   %s% / ", NULL},
+    // { ram_used, "  %s | ", NULL},
+    // {battery_state, "  %s /", "BAT0"},
+    // {battery_perc, "   %s% |", "BAT0"},
+    // {cpu_perc, "  %s% /", NULL},
+    // {temp, "  %s󰔄 |", "/sys/class/thermal/thermal_zone0/temp"},
+    // {ram_used, "   %s |", NULL},
+    // {run_command, " 󰸗 %s |", "date +'%b %d'"},
+    // {disk_perc, "   %s% |", "/home"},
+    // {wifi_essid, "   %s |", "wlan0"},
+    // {keymap, "  %s ", NULL},
+}
+;
