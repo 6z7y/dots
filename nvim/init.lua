@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 -- Bootstrap lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  print("Installing lazy.nvim...")
+  print("Please wait...")
   vim.fn.system({
     "git",
     "clone",
