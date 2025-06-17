@@ -151,14 +151,6 @@ return {
     end,
   },
 
-  -- Auto tag: Auto close and rename HTML tags
-  {
-    'windwp/nvim-ts-autotag',
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
-  },
-
   -- Rust Tools: Enhanced Rust development
   {
     "simrat39/rust-tools.nvim",
