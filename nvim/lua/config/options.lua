@@ -15,9 +15,9 @@ vim.opt.splitkeep = "cursor"              -- Keep cursor when splitting
 
 -- Indentation
 vim.opt.expandtab = true       -- تحويل الـ tab إلى مسافات (أولاً)
-vim.opt.tabstop = 4            -- عرض حرف الـ tab (4 مسافات) - الأفضل للبرمجة
-vim.opt.shiftwidth = 4         -- مسافة المسافة البادئة التلقائية (4 مسافات)
-vim.opt.softtabstop = 4        -- مسافة الـ tab عند الضغط على زر Tab
+vim.opt.tabstop = 2            -- عرض حرف الـ tab (4 مسافات) - الأفضل للبرمجة
+vim.opt.shiftwidth = 2         -- مسافة المسافة البادئة التلقائية (4 مسافات)
+vim.opt.softtabstop = 2        -- مسافة الـ tab عند الضغط على زر Tab
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 
