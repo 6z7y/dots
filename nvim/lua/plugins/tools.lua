@@ -4,9 +4,10 @@
 return {
   -- ============ UI & VISUAL PLUGINS ============
 
-  -- Color scheme: Solarized Osaka theme
+  -- OR Color scheme: Catppuccin
   {
-    "craftzdog/solarized-osaka.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
     opts = {},
@@ -16,7 +17,7 @@ return {
     "AlphaTechnolog/pywal.nvim",
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme solarized-osaka") -- أول
+      vim.cmd("colorscheme catppuccin") -- أول
       require("pywal").setup()
       vim.cmd("colorscheme pywal") -- بعده
     end,
@@ -219,6 +220,7 @@ return {
       config = function()
           require("toggleterm").setup({
               open_mapping = [[<C-_>]],
+              -- open_mapping = [[<C-\>]], // wayland: ctrl + \
               shell = "fish",
               start_in_insert = true,
               hide_numbers = true,
