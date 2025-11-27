@@ -6,35 +6,32 @@ animation-window-mass = 0.6;
 animation-dampening = 9;
 animation-clamping = false;                    # Enabled to limit zoom extent
 # Animation styles with controlled zoom effect
-animation-for-open-window = "fly-in";           # Kept zoom for main windows
-animation-for-unmap-window = "slide-up";
-animation-for-transient-window = "squeeze";
-animation-for-prev-tag = "slide-in-center";
-animation-for-next-tag = "slide-out-center";
-animation-max-size = 50;  # Smaller = less GPU load
+animation-for-open-window = "zoom";           # Kept zoom for main windows
+animation-for-unmap-window = "zoom";
+animation-for-transient-window = "zoom";   # Changed to squeeze for popups to limit screen space usage
+animation-for-prev-tag = "zoom";
+animation-for-next-tag = "zoom"
 # Additional animation control
-animation-for-workspace-switch-in = "slide-down";   # Control workspace transitions
-animation-for-workspace-switch-out = "slide-up";  # Control workspace transitions
+animation-for-workspace-switch-in = "zoom";   # Control workspace transitions
+animation-for-workspace-switch-out = "zoom";  # Control workspace transitions
 # Animation size limits (new parameters)
-animation-max-size = 30;                      # Limit maximum animation expansion
+animation-max-size = 50;                      # Limit maximum animation expansion
 # Tag transition fading
 enable-fading-prev-tag = true;
 enable-fading-next-tag = true;
 # Shadow settings
-shadow = false;
+shadow = true;
 shadow-radius = 9;
 shadow-offset-x = -3;
 shadow-offset-y = -3;
 shadow-opacity = 0.8;
 shadow-color = "#000000"
 shadow-exclude = [
-  "class_g = 'Firefox'",
-  "class_g = 'mpv'",
   "class_g = 'slop'",
 ];
 # Fading settings
 fading = true;
-fade-in-step = 0.035;
+fade-in-step = 0.025;
 fade-out-step = 0.015;
 fade-delta = 15;
 focus-exclude = [
@@ -49,25 +46,24 @@ focus-exclude = [
 opacity-rule = [
 "95:class_g = 'Vesktop'",
 # "85:class_g ='Zathura' && !focused",
-# "90:class_g = 'st-256color' && focused",
-# "73:class_g = 'st-256color' && !focused",
-"90:class_g = 'st-256color'",
+"85:class_g = 'st-256color' && focused",
+"73:class_g = 'st-256color' && !focused",
 "70:class_g ='dmenu'",
 "80:class_g ='dwm'",
-# "99:class_g = 'Firefox' && !focused",
+"99:class_g = 'firefox' && !focused",
 ];
 # Corner settings
-corner-radius = 16.1;
+corner-radius = 15;
 rounded-corners-exclude = [
   "class_g = 'slop'",
   "window_type = 'desktop'"
 ];
 # Blur settings
 blur-method = "dual_kawase";
-blur-strength = 7;
+blur-strength = 6;
 blur-kern = "3x3box";
-blur-background = false;
-blur-background-frame = false;
+blur-background = true;
+blur-background-frame = true;
 blur-background-fixed = false;
 
 blur-exclude = [
@@ -75,8 +71,7 @@ blur-exclude = [
   "window_type = 'dock'",
   "window_type = 'toolbar'",
   "window_type = 'utility'",
-  "window_type = 'dropdown_menu'",
-  "class_g = 'Firefox'",
+  "class_g = 'firefox'",
   "class_g = 'slop'",
   "class_g = 'maim'",
   "_GTK_FRAME_EXTENTS@:c"
@@ -106,13 +101,14 @@ window-shader-fg = "default";
 transparent-clipping = false;
 log-level = "warn";
 # Window type specific settings - special handling for popups
-wintypes = {
-    tooltip = { fade = true, shadow = false, focus = true };
-    dock = { shadow = false, clip-shadow-above = true };
-    dnd = { shadow = false };
-    popup_menu = { opacity = 0.95, shadow = false };  # Disabled shadow
-    dropdown_menu = { opacity = 0.9 };
-    unknown = { fade = false, shadow = false, focus = false };
+wintypes: {
+  tooltip = { fade = true; shadow = false; opacity = 0.95; focus = true; };
+  dock = { shadow = false; clip-shadow-above = true; };
+  dnd = { shadow = false; };
+  popup_menu = { opacity = 0.95; shadow = true; };
+  dropdown_menu = { opacity = 0.95; animations = true; shadow = true };
+  # Add slop to wintypes for specific handling
+  unknown = { fade = false; shadow = false; opacity = 1.0; focus = false; full-shadow = false; clip-shadow-above = false; animations = false; };
 };
 
 unredir-if-possible-exclude = [
