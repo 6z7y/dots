@@ -1,13 +1,13 @@
-From 36c3d68f185f47cbb754569775b7888728be4711 Mon Sep 17 00:00:00 2001
-From: elbachir-one <bachiralfa@gmail.com>
-Date: Sun, 16 Jun 2024 21:28:41 +0100
-Subject: [PATCH] Adding an option to change the height as well
+From 95a444534c230de79000348b0e12f8644aac8b15 Mon Sep 17 00:00:00 2001
+From: leliel <mail.leliel@proton.me>
+Date: Mon, 7 Apr 2025 01:00:01 +0000
+Subject: [PATCH] Increased speed for long files with emojis.
 
 ---
  config.def.h |  3 +++
  dmenu.1      |  3 +++
- dmenu.c      | 38 ++++++++++++++++++++++++++++++++------
- 3 files changed, 38 insertions(+), 6 deletions(-)
+ dmenu.c      | 40 ++++++++++++++++++++++++++++++++++------
+ 3 files changed, 40 insertions(+), 6 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
 index 1edb647..832896f 100644
@@ -38,10 +38,18 @@ index 323f93c..c036baa 100644
  dmenu grabs the keyboard before reading stdin if not reading from a tty. This
  is faster, but will lock up X until stdin reaches end\-of\-file.
 diff --git a/dmenu.c b/dmenu.c
-index 40f93e0..32d6a9d 100644
+index fd49549..ceb52c7 100644
 --- a/dmenu.c
 +++ b/dmenu.c
-@@ -95,6 +95,15 @@ calcoffsets(void)
+@@ -29,6 +29,7 @@ enum { SchemeNorm, SchemeSel, SchemeOut, SchemeLast }; /* color schemes */
+ 
+ struct item {
+ 	char *text;
++	unsigned int width;
+ 	struct item *left, *right;
+ 	int out;
+ };
+@@ -95,6 +96,15 @@ calcoffsets(void)
  			break;
  }
  
@@ -50,14 +58,22 @@ index 40f93e0..32d6a9d 100644
 +{
 +	int len = 0;
 +	for (struct item *item = items; item && item->text; item++)
-+		len = MAX(TEXTW(item->text), len);
++		len = MAX(item->width, len);
 +	return len;
 +}
 +
  static void
  cleanup(void)
  {
-@@ -636,6 +645,7 @@ setup(void)
+@@ -563,6 +573,7 @@ readstdin(void)
+ 			line[len - 1] = '\0';
+ 		if (!(items[i].text = strdup(line)))
+ 			die("strdup:");
++		items[i].width = TEXTW(line);
+ 
+ 		items[i].out = 0;
+ 	}
+@@ -636,6 +647,7 @@ setup(void)
  	bh = drw->fonts->h + 2;
  	lines = MAX(lines, 0);
  	mh = (lines + 1) * bh;
@@ -65,7 +81,7 @@ index 40f93e0..32d6a9d 100644
  #ifdef XINERAMA
  	i = 0;
  	if (parentwin == root && (info = XineramaQueryScreens(dpy, &n))) {
-@@ -662,9 +672,16 @@ setup(void)
+@@ -662,9 +674,16 @@ setup(void)
  				if (INTERSECT(x, y, 1, 1, info[i]) != 0)
  					break;
  
@@ -85,7 +101,7 @@ index 40f93e0..32d6a9d 100644
  		XFree(info);
  	} else
  #endif
-@@ -672,9 +689,16 @@ setup(void)
+@@ -672,9 +691,16 @@ setup(void)
  		if (!XGetWindowAttributes(dpy, parentwin, &wa))
  			die("could not get embedding window attributes: 0x%lx",
  			    parentwin);
@@ -105,7 +121,7 @@ index 40f93e0..32d6a9d 100644
  	}
  	promptw = (prompt && *prompt) ? TEXTW(prompt) - lrpad / 4 : 0;
  	inputw = mw / 3; /* input width: ~33% of monitor width */
-@@ -734,6 +758,8 @@ main(int argc, char *argv[])
+@@ -733,6 +759,8 @@ main(int argc, char *argv[])
  			topbar = 0;
  		else if (!strcmp(argv[i], "-f"))   /* grabs keyboard before reading stdin */
  			fast = 1;
@@ -115,5 +131,5 @@ index 40f93e0..32d6a9d 100644
  			fstrncmp = strncasecmp;
  			fstrstr = cistrstr;
 -- 
-2.45.2
+2.49.0
 
