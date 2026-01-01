@@ -1,9 +1,9 @@
 {
     "logo": {
-    "type": "small",
-//    "source": "~/.config/fastfetch/logo2.jpg",
-    "width": 40,
-    "height": 17
+    // "type": "small",
+   "source": "~/.config/fastfetch/logo1.txt",
+    // "width": 0,
+    // "height": 17
     },
     "display": {
         "separator": " ~ "
